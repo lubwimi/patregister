@@ -1,0 +1,11 @@
+
+{% if medlemmar.count > 0 %}
+
+{% for medlem in medlemmar %}
+    <li><a href="/get/{{ medlem.id }}">{{ medlem.fornamn }}</a></li>
+{% endfor %}
+
+{% else %}:
+    <li>None to show!</li>
+
+{% endif %}

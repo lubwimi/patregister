@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Medlem{% endblock %}
+
+{% load staticfiles %}
+    
+{% block content %}
+    
+    {% csrf_token %}
+    <!--Sok Medlem: <input type="text" id="search" name="search" />-->
+    <ul id="search-results">
+        
+    </ul>
+    
+    <div class="medlem">
+    <h3 style="color: #FF00FF;">{{ your_medlem.fornamn | upper }} {{ your_medlem.efternamn | upper }}</h3>
+    Personnummer: <strong>{{ your_medlem.personnummer }}</strong><br />
+    Adress: <strong>{{ your_medlem.adress }}</strong><br />
+    Telefon: <strong>{{ your_medlem.telefon }}</strong><br />
+    <!--Fordelsedag: <strong>{{ your_medlem.fodelsedatum }}</strong><br />-->
+    Dopdatum: <strong>{{ your_medlem.dopdatum }}</strong><br />
+    Ankomstdatum: <strong>{{ your_medlem.ankomstdatum }}</strong><br />
+    Uttrade: <strong>{{ your_medlem.uttrade }}</strong><br />
+    Gift_med: <strong>{{ your_medlem.gift_med }}</strong><br />
+    Ogift: <strong>{{ your_medlem.ogift }}</strong><br />
+    
+    <h4><a href="{% url 'medlem' %}">Medlemmar !</a></h4>
+    </div>
+    
+{% endblock %}
+

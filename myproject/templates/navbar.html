@@ -1,0 +1,23 @@
+
+{% load staticfiles %}
+
+<div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation" class="active"><a href="{% url 'home' %}">Hem</a></li>
+        {% if user.is_authenticated %}
+        <li role="presentation"><a href="{% url 'logout' %}">Logga ut</a></li>
+        <li role="presentation"><a href="#">Search: <input type="text" id="search" name="search"  /></a></li>
+        {% else %}
+        <li role="presentation"><a href="{% url 'about' %}">OmPatReg</a></li>
+        <li role="presentation"><a href="{% url 'login' %}">Logga in</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% if user.is_authenticated %}
+        <h3 class="text-muted"><a href="{% url 'register' %}">Register</a></h3>
+    {% else %}
+        <h3 class="text-muted"><a href="#">Register</a></h3>
+    {% endif %}
+</div>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Patregister{% endblock %}
+    
+{% load staticfiles %}
+
+{% block content %}
+
+    {% csrf_token %}
+    <!--Sok Medlem: <input type="text" id="search" name="search" />-->
+    <ul id="search-results">
+        
+    </ul>
+    
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <h2><a href="{% url 'medlem' %}">{{ greeting }}</a></h2>
+            <p class="lead"><a href="{% url 'medlem' %}"><img src="{% static "img/patmos_logo.jpeg" %}" alt="Stock" /></a></p>
+            <p><a class="btn btn-lg btn-success" href="{% url 'registuser' %}" role="button">Administrator</a></p>
+        {% else %}
+            <h2><a href="#">{{ greeting }}</a></h2>
+            <p class="lead"><a href="#"><img src="{% static "img/patmos_logo.jpeg" %}" alt="Stock" /></a></p>
+            <p><a class="btn btn-lg btn-success" href="#" role="button">Administrator</a></p>
+        {% endif %}
+    </div>
+  
+
+{% endblock %}
+

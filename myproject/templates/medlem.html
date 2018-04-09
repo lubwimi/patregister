@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head_title %}Patmos medlemmar{% endblock %}
+
+{% load staticfiles %}
+    
+{% block content %}
+    
+    <h2>PATMOS FORSAMLINGS MEDLEMMAR!</h2>
+    
+    <!--<h3>Search</h3>-->
+    {% csrf_token %}
+    <!--Sok: <input type="text" id="search" name="search" />-->
+    <ul id="search-results">
+        
+    </ul>
+    
+    <!--{% for medlem in medlemmar %}
+        <ul>
+        <li><strong>{{ medlem.fornamn|upper }} {{ medlem.efternamn|upper }}</strong><br />Pnummer: {{ medlem.personnummer }}
+        <br />Adress: {{ medlem.adress }}<br />Telefon: {{ medlem.telefon }}<br />Fodelsedatum: {{ medlem.fodelsedatum }}
+        <br />Dopdatum: {{ medlem.dopdatum }}<br />Ankomstdatum: {{ medlem.ankomstdatum }}<br />Avgadatum: {{ medlem.avgadatum }}
+        <br />Gift: {{ medlem.gift }}<br />Ogift: {{ medlem.ogift }}</li>
+        </ul>
+    {% endfor %}-->
+    
+    {% for medlem in medlemmar %}
+        <a href="/medlem/delete/{{ medlem.id }}">x</a>
+        <strong style="color: #FF00FF;">{{ medlem.fornamn|upper }} {{ medlem.efternamn|upper }}</strong><br />Pnummer: {{ medlem.personnummer }}
+        <br />Adress: {{ medlem.adress }}<br />Telefon: {{ medlem.telefon }}<br />Dopdatum: {{ medlem.dopdatum }}
+        <br />Ankomstdatum: {{ medlem.ankomstdatum }}<br />Uttrade: {{ medlem.uttrade }}
+        <br />Gift_med: {{ medlem.gift_med }}<br />Ogift: {{ medlem.ogift }}<br /><br />
+    {% endfor %}
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if medlemmar.has_previous %}
+                <a href="?page={{ medlemmar.previous_page_number }}">previous</a>
+            {% endif %}
+        </span>
+        
+        <span class="current">
+            Sida {{ medlemmar.number }} av {{ medlemmar.paginator.num_pages }} .
+        </span>
+        
+        {% if medlemmar.has_next %}
+            <a href="?page={{ medlemmar.next_page_number }}">next</a>
+        {% endif %}
+        
+    </div>
+    
+{% endblock %}
+

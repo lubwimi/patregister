@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head_title %}RegAdministrator{% endblock %}
+
+{% load staticfiles %}
+    
+{% block content %}
+    
+    <h2>Registrera Administrator </h2>
+    
+    {% if registered %}
+        <strong>Tack for registering!</strong>
+    {% else %}
+        <form id="user_form" method="post" action="/registuser/">
+            
+            {% csrf_token %}
+            
+            {{ user_form.as_p }}
+            
+            <input type="submit" name="submit" value="RegAdmin." />
+        </form>
+    {% endif %}
+    
+{% endblock %}
+
