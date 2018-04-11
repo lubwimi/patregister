@@ -55,7 +55,7 @@ def registform(request):
 def medlem(request):
     
     medlem_list = Patmos.objects.all()
-    paginator = Paginator(medlem_list, 100) # Show 2 medlemmar per page
+    paginator = Paginator(medlem_list, 100) # Show 100 medlemmar per page
     
     page = request.GET.get('page')
     try:
