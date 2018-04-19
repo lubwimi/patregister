@@ -18,10 +18,12 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 from patregister import views
+from contact import views as contactviews
 
 urlpatterns = [
     url(r'^home/$', views.home, name='home'),
     url(r'^about/$', views.about, name='about'),
+    url(r'^contact/$', contactviews.contact, name='contact'),
     url(r'^register/$', views.registform, name='register'),
     url(r'^medlem/$', views.medlem, name='medlem'),
     url(r'^get/(?P<medlem_id>\d+)/$', views.your_medlem),

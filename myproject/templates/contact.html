@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block head_title %}
+    Contact 
+{% endblock %}
+
+{% block content %}
+    <div class="touch" style="text-align: center; margin-top: 10%;">
+        <h2>Contact</h2>
+        {% if connected %}
+            <h2>Register says: <strong>thank you for your message!</strong></h2>
+            <h2><a href="{% url 'home' %}">Return to the home page.</a><br /></h2>
+        {% else %}
+            <form role="form" action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form><br />
+        {% endif %}
+    </div>
+{% endblock %}
